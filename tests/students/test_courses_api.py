@@ -56,12 +56,10 @@ def test_filter_id_courses(client, course_factory):
     courses = course_factory(_quantity=20)
     course_id = courses[5].id
 
-    url = reverse('courses-detail', args=(course_id,))
-    response = client.get(url)
-    data = response.json()
+    response = client.get("/api/v1/courses/", {'id': course_id})
 
     assert response.status_code == 200
-    assert data['name'] == courses[5].name
+    assert response.data[0]['name'] == courses[5].name
 
 
 @pytest.mark.django_db
