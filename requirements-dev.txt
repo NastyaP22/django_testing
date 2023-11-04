@@ -2,4 +2,3 @@
 pytest
 pytest-django
 model_bakery
-python-dotenv
